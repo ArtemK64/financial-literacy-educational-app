@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class CyrillicValidator implements ConstraintValidator<Cyrillic, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        Matcher matcher = Pattern.compile("[а-яА-Я]").matcher(s);
+        Matcher matcher = Pattern.compile("[а-яА-Я]+").matcher(s);
         return matcher.matches();
     }
 }

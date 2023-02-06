@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class PasswordValidator implements ConstraintValidator<Password, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        Matcher matcher = Pattern.compile(".{7,15}").matcher(s);
+        Matcher matcher = Pattern.compile(".{7,}").matcher(s);
         return matcher.matches();
     }
 }

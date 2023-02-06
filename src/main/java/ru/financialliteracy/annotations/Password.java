@@ -16,7 +16,7 @@ import static java.lang.annotation.ElementType.FIELD;
 @Constraint(validatedBy = PasswordValidator.class)
 @Documented
 public @interface Password {
-    String message() default "Пароль должен содержать от 7 до 15 символов";
+    String message() default "Пароль должен содержать от 7 символов";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

@@ -23,6 +23,10 @@
                 <label>Введите пароль</label>
                 <input type="password" th:field="*{password}" class="form-fields-input">
                 <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+                <div style="color:red" th:if="${param.error}">
+                    Некорректный логин или пароль
+                </div>
             </div>
 
             <div class="form-field">

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Общий тест</title>
+    <link th:href="@{/css/test.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="form">
+    <video autoplay loop class="form-background-video" muted playsinline>
+        <source src="/videos/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="form-title">Тест</div>
+    <form th:action="@{/test}" th:object="${test}" th:method="patch">
+        <div class="form-content">
+
+            <div class="form-field">
+                <label>
+                    В какой жизненной ситуации Солдатов К.Ю. не будет являться плательщиком страховых взносов?
+                    <div>1. получил заработную плату в размере 13 000 руб.</div>
+                    <div>2. организация возместила ему расходы на профессиональную подготовку 30000 руб.</div>
+                    <div>3. в марте 2022 г. получил премию в размере 6 000 руб.</div>
+<!--                    2 variant-->
+                </label>
+                <input type="text" th:field="*{firstAnswer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('firstAnswer')}" th:errors="*{firstAnswer}"></div>
+            </div>
+
+            <div class="form-field">
+                <label>
+                    Молодая семья Васильченко решила взять двухкомнатную квартиру в ипотеку. Что не будет входить в условия ипотечного кредитования?
+                    <div>1. залог</div>
+                    <div>2. страхование</div>
+                    <div>3. количество лет в браке</div>
+                    <!--                    3 variant-->
+                </label>
+                <input type="text" th:field="*{secondAnswer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('secondAnswer')}" th:errors="*{secondAnswer}"></div>
+            </div>
+
+            <div class="form-field">
+                <label>
+                    Семья Лютиковых самостоятельно стала рассчитывать полную стоимость ипотечного кредита на приобретение квартиры. Какие расходы неверно были включены в расчёт?
+
+                    <div>1. налоги</div>
+                    <div>2. коммунальные платежи</div>
+                    <div>3. страховка</div>
+                    <!--                    2 variant-->
+                </label>
+                <input type="text" th:field="*{thirdAnswer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('thirdAnswer')}" th:errors="*{thirdAnswer}"></div>
+            </div>
+
+            <div class="form-field">
+                <label>
+                    Как называются услуги персонального брокера?
+
+                    <div>1. брокерские услуги</div>
+                    <div>2. доверительное управление</div>
+                    <div>3. посреднические услуги</div>
+                    <!--                    2 variant-->
+                </label>
+                <input type="text" th:field="*{fourthAnswer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('fourthAnswer')}" th:errors="*{fourthAnswer}"></div>
+            </div>
+
+            <div class="form-field">
+                <label>
+                    Относительная бедность определяется на основе показателя
+
+                    <div>1. стандартов потребления среднедоходных социальных групп</div>
+                    <div>2. качества жизни</div>
+                    <div>3. прожиточного минимума</div>
+                    <!--                    1 variant-->
+                </label>
+                <input type="text" th:field="*{fifthAnswer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('fifthAnswer')}" th:errors="*{fifthAnswer}"></div>
+            </div>
+
+            <div class="form-field">
+                <input type="submit" value="Подтвердить" class="form-input-button">
+            </div>
+            <div class="font-link">
+                <a href="https://fingram.olimpiada.ru/upload/files/OTB2023Vyigruzka_11_01_10-11.pdf">Задания взяты из данного ресурса</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

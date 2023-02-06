@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.financialliteracy.entities.User;
 import ru.financialliteracy.repositories.UserRepository;
+import ru.financialliteracy.service.interfaces.IUserService;
 
 import java.util.List;
 

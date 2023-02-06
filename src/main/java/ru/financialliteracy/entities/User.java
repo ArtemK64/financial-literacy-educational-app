@@ -18,7 +18,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Table(name = "user")
 public class User implements UserDetails {
     @Id

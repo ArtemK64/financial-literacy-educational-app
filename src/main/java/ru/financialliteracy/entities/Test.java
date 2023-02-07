@@ -1,18 +1,22 @@
 package ru.financialliteracy.entities;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 import ru.financialliteracy.annotations.ValidAnswer;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Table(name = "test")
 public class Test {
     @Id
@@ -51,13 +55,17 @@ public class Test {
     }
 
     public final List<String> getAllAnswers() {
-        return List.of(
+        return removeSpacesFromStrings(
                 firstAnswer,
                 secondAnswer,
                 thirdAnswer,
                 fourthAnswer,
                 fifthAnswer
         );
+    }
+
+    public final List<String> removeSpacesFromStrings(String... answers) {
+        return Arrays.stream(answers).map(String::trim).toList();
     }
 
     public final int countCorrectAnswers(List<String> correctAnswers, List<String> userAnswers) {
@@ -68,5 +76,27 @@ public class Test {
             }
         }
         return count;
+    }
+
+    public final Test removeSpacesFromAnswersBeforeSaving(Test test) {
+        test.firstAnswer = firstAnswer.trim();
+        test.secondAnswer = secondAnswer.trim();
+        test.thirdAnswer = thirdAnswer.trim();
+        test.fourthAnswer = fourthAnswer.trim();
+        test.fifthAnswer = fifthAnswer.trim();
+        return test;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Test test = (Test) o;
+        return id != null && Objects.equals(id, test.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

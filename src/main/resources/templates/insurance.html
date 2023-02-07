@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Страхование</title>
+    <link th:href="@{/css/exercises/insurance.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="form">
+    <video autoplay loop class="form-background-video" muted playsinline>
+        <source src="/videos/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="form-title">Решите задание</div>
+    <form th:action="@{/exercises/insurance}" th:object="${task}" th:method="patch">
+        <div class="form-content">
+            <div class="form-field">
+                <label>Автомобиль папы был застрахован на сумму 160 000 рублей.
+                    Размер ущерба, который был причинен автомобилю в результате
+                    дорожно-транспортного происшествия, в котором папа признан
+                    потерпевшим, равен 120 000 рублей. Какое страховое возмещение получит папа?
+                    (в ответе укажите только число)
+                </label>
+                <input type="text" th:field="*{answer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"></div>
+            </div>
+
+            <div class="form-field">
+                <input type="submit" value="Подтвердить" class="form-input-button">
+            </div>
+            <div class="font-link">
+                <a href="https://fincult.info/upload/iblock/223/Sbornik_zadach_5_9.pdf">Задание взято из данного ресурса</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

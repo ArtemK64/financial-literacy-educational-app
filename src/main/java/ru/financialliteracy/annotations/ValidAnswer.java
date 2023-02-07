@@ -1,6 +1,5 @@
 package ru.financialliteracy.annotations;
 
-import ru.financialliteracy.validations.PasswordValidator;
 import ru.financialliteracy.validations.ValidAnswerValidator;
 
 import javax.validation.Constraint;
@@ -17,7 +16,7 @@ import static java.lang.annotation.ElementType.FIELD;
 @Constraint(validatedBy = ValidAnswerValidator.class)
 @Documented
 public @interface ValidAnswer {
-    String message() default "Ответ может быть только «А», «Б» или «В» в любом регистре";
+    String message() default "Ответ может быть только «А», «Б» или «В»";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

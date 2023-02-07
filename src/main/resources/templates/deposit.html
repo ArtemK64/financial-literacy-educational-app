@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Депозит</title>
+    <link th:href="@{/css/exercises/deposit.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="form">
+    <video autoplay loop class="form-background-video" muted playsinline>
+        <source src="/videos/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="form-title">Решите задание</div>
+    <form th:action="@{/exercises/deposit}" th:object="${task}" th:method="patch">
+        <div class="form-content">
+            <div class="form-field">
+                <label>Вкладчик открыл банковский депозит в размере 2 000 000
+                    рублей сроком на 6 мес. Определите годовую доходность депозита, если полученный доход составил 50 000 рублей.
+                    (в ответе укажите только процент)
+                </label>
+                <input type="text" th:field="*{answer}" class="form-fields-input">
+                <div style="color:red" th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}"></div>
+            </div>
+
+            <div class="form-field">
+                <input type="submit" value="Подтвердить" class="form-input-button">
+            </div>
+            <div class="font-link">
+                <a href="https://fincult.info/upload/iblock/223/Sbornik_zadach_5_9.pdf">Задание взято из данного ресурса</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

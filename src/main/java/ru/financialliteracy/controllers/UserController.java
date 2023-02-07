@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
-public class RegisterController {
+public class UserController {
     private final UserRepository userRepository;
     private final UserService userService;
 
@@ -44,5 +44,10 @@ public class RegisterController {
     @GetMapping("/registration-err")
     public String registrationErrPage() {
         return "registration-err";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(@ModelAttribute("user") User user) {
+        return "login";
     }
 }

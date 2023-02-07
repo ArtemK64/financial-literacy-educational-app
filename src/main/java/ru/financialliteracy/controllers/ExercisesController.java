@@ -14,6 +14,8 @@ import ru.financialliteracy.entities.User;
 import ru.financialliteracy.repositories.TestRepository;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,7 +36,7 @@ public class ExercisesController {
         if (bindingResult.hasErrors()) {
             return "test";
         }
-//        test.setQtyOfCorrectAnswers(2);
+        test.setQtyOfCorrectAnswers(test.countCorrectAnswers(List.of("Б", "В", "Б", "Б", "А"), test.getAllAnswers()));
         testRepository.save(test);
         return "test";
     }

@@ -4,10 +4,13 @@ import ru.financialliteracy.annotations.ValidAnswer;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ValidAnswerValidator implements ConstraintValidator<ValidAnswer, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return "1".equals(s) || "2".equals(s) || "3".equals(s);
+        Matcher matcher = Pattern.compile("[абвАБВ]").matcher(s);
+        return matcher.matches();
     }
 }

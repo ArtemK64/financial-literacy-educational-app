@@ -5,13 +5,14 @@ import org.hibernate.Hibernate;
 import ru.financialliteracy.annotations.ValidAnswer;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "test")
 public class Test {
     @Id
@@ -41,16 +42,31 @@ public class Test {
     @Column(name = "qty_of_correct_answers", nullable = false)
     private Integer qtyOfCorrectAnswers;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Test test = (Test) o;
-        return id != null && Objects.equals(id, test.id);
+    public Test(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {
+        this.firstAnswer = firstAnswer;
+        this.secondAnswer = secondAnswer;
+        this.thirdAnswer = thirdAnswer;
+        this.fourthAnswer = fourthAnswer;
+        this.fifthAnswer = fifthAnswer;
     }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public final List<String> getAllAnswers() {
+        return List.of(
+                firstAnswer,
+                secondAnswer,
+                thirdAnswer,
+                fourthAnswer,
+                fifthAnswer
+        );
+    }
+
+    public final int countCorrectAnswers(List<String> correctAnswers, List<String> userAnswers) {
+        int count = 0;
+        for (int i = 0; i < correctAnswers.size(); i++) {
+            if (correctAnswers.get(i).equalsIgnoreCase(userAnswers.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 }

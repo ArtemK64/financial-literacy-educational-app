@@ -17,7 +17,7 @@ import static java.lang.annotation.ElementType.FIELD;
 @Constraint(validatedBy = ValidAnswerValidator.class)
 @Documented
 public @interface ValidAnswer {
-    String message() default "Ответ может быть только 1, 2 или 3";
+    String message() default "Ответ может быть только «А», «Б» или «В» в любом регистре";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

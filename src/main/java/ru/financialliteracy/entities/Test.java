@@ -2,6 +2,7 @@ package ru.financialliteracy.entities;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import ru.financialliteracy.annotations.ValidAnswer;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -17,18 +18,23 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ValidAnswer
     @Column(name = "first_answer", nullable = false)
     private String firstAnswer;
 
+    @ValidAnswer
     @Column(name = "second_answer", nullable = false)
     private String secondAnswer;
 
+    @ValidAnswer
     @Column(name = "third_answer", nullable = false)
     private String thirdAnswer;
 
+    @ValidAnswer
     @Column(name = "fourth_answer", nullable = false)
     private String fourthAnswer;
 
+    @ValidAnswer
     @Column(name = "fifth_answer", nullable = false)
     private String fifthAnswer;
 

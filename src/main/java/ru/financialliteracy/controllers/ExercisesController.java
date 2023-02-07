@@ -1,11 +1,14 @@
 package ru.financialliteracy.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.financialliteracy.entities.Test;
 import ru.financialliteracy.entities.User;
 import ru.financialliteracy.repositories.TestRepository;
@@ -31,6 +34,7 @@ public class ExercisesController {
         if (bindingResult.hasErrors()) {
             return "test";
         }
+//        test.setQtyOfCorrectAnswers(2);
         testRepository.save(test);
         return "test";
     }

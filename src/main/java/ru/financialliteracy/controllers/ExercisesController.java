@@ -1,7 +1,6 @@
 package ru.financialliteracy.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,7 +72,7 @@ public class ExercisesController {
             model.addAttribute("answer", "Вы дали неправильный ответ. Верно: 86550");
         }
         taskRepository.save(task);
-        return "personal-finance-plan-results";
+        return "task-results";
     }
 
     @GetMapping("/exercises/deposit")
@@ -99,7 +98,7 @@ public class ExercisesController {
             model.addAttribute("answer", "Вы дали неправильный ответ. Верный ответ: 5");
         }
         taskRepository.save(task);
-        return "deposit-results";
+        return "task-results";
     }
 
     @GetMapping("/exercises/insurance")
@@ -125,7 +124,7 @@ public class ExercisesController {
             model.addAttribute("answer", "Вы дали неправильный ответ. Верный ответ: 120000");
         }
         taskRepository.save(task);
-        return "insurance-results";
+        return "task-results";
     }
 
     @GetMapping("/exercises/investment")
@@ -153,7 +152,7 @@ public class ExercisesController {
         }
 
         taskRepository.save(task);
-        return "investment-results";
+        return "task-results";
     }
 
     @GetMapping("/exercises/pension")
@@ -181,6 +180,6 @@ public class ExercisesController {
         }
 
         taskRepository.save(task);
-        return "pension-results";
+        return "task-results";
     }
 }

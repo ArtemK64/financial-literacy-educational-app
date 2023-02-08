@@ -13,66 +13,58 @@
     <div class="form-title">Тест</div>
     <form th:action="@{/exercises/test}" th:object="${test}" th:method="patch">
         <div class="form-content">
-
             <div class="form-field">
-                <label>
-                    В какой жизненной ситуации Солдатов К.Ю. не будет являться плательщиком страховых взносов?
+                <div class="form-field-title">
+                    <div>В какой жизненной ситуации Солдатов К.Ю. не будет являться плательщиком страховых взносов?</div>
                     <div>А. получил заработную плату в размере 13 000 руб.</div>
                     <div>Б. организация возместила ему расходы на профессиональную подготовку 30000 руб.</div>
                     <div>В. в марте 2022 г. получил премию в размере 6 000 руб.</div>
-<!--                    2 variant-->
-                </label>
+                </div>
                 <input type="text" th:field="*{firstAnswer}" class="form-fields-input">
                 <div style="color:red" th:if="${#fields.hasErrors('firstAnswer')}" th:errors="*{firstAnswer}"></div>
             </div>
 
             <div class="form-field">
-                <label>
-                    Молодая семья Васильченко решила взять двухкомнатную квартиру в ипотеку. Что не будет входить в условия ипотечного кредитования?
+                <div class="form-field-title">
+                    <div>Молодая семья Васильченко решила взять двухкомнатную квартиру в ипотеку.
+                        Что не будет входить в условия ипотечного кредитования?</div>
                     <div>А. залог</div>
                     <div>Б. страхование</div>
                     <div>В. количество лет в браке</div>
-                    <!--                    3 variant-->
-                </label>
+                </div>
                 <input type="text" th:field="*{secondAnswer}" class="form-fields-input">
                 <div style="color:red" th:if="${#fields.hasErrors('secondAnswer')}" th:errors="*{secondAnswer}"></div>
             </div>
 
             <div class="form-field">
-                <label>
+                <div class="form-field-title">
                     Семья Лютиковых самостоятельно стала рассчитывать полную стоимость ипотечного кредита на приобретение квартиры. Какие расходы неверно были включены в расчёт?
-
                     <div>А. налоги</div>
                     <div>Б. коммунальные платежи</div>
                     <div>В. страховка</div>
-                    <!--                    2 variant-->
-                </label>
+                </div>
                 <input type="text" th:field="*{thirdAnswer}" class="form-fields-input">
                 <div style="color:red" th:if="${#fields.hasErrors('thirdAnswer')}" th:errors="*{thirdAnswer}"></div>
             </div>
 
             <div class="form-field">
-                <label>
-                    Как называются услуги персонального брокера?
-
+                <div class="form-field-title">
+                    <div>Как называются услуги персонального брокера?</div>
                     <div>А. брокерские услуги</div>
                     <div>Б. доверительное управление</div>
                     <div>В. посреднические услуги</div>
-                    <!--                    2 variant-->
-                </label>
+                </div>
                 <input type="text" th:field="*{fourthAnswer}" class="form-fields-input">
                 <div style="color:red" th:if="${#fields.hasErrors('fourthAnswer')}" th:errors="*{fourthAnswer}"></div>
             </div>
 
             <div class="form-field">
-                <label>
-                    Относительная бедность определяется на основе показателя
-
+                <div class="form-field-title">
+                    <div>Относительная бедность определяется на основе показателя</div>
                     <div>А. стандартов потребления среднедоходных социальных групп</div>
                     <div>Б. качества жизни</div>
                     <div>В. прожиточного минимума</div>
-                    <!--                    1 variant-->
-                </label>
+                </div>
                 <input type="text" th:field="*{fifthAnswer}" class="form-fields-input">
                 <div style="color:red" th:if="${#fields.hasErrors('fifthAnswer')}" th:errors="*{fifthAnswer}"></div>
             </div>

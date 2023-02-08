@@ -37,8 +37,7 @@ body {
     align-items: center;
 }
 
-.form .form-content .form-field label {
-   width: 200px;
+.form .form-content .form-field .form-field-title {
    color: #757575;
    margin-right: 10px;
    font-size: 13px;

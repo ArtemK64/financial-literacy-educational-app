@@ -3,7 +3,6 @@ package ru.financialliteracy.entities;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.Hibernate;
 import ru.financialliteracy.annotations.ValidAnswer;
 
@@ -15,7 +14,6 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Table(name = "test")
 public class Test {
@@ -46,6 +44,8 @@ public class Test {
     @Column(name = "qty_of_correct_answers", nullable = false)
     private Integer qtyOfCorrectAnswers;
 
+    private User userEmail;
+
     public Test(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {
         this.firstAnswer = firstAnswer;
         this.secondAnswer = secondAnswer;
@@ -68,7 +68,7 @@ public class Test {
         return Arrays.stream(answers).map(String::trim).toList();
     }
 
-    public final int countCorrectAnswers(List<String> correctAnswers, List<String> userAnswers) {
+    public final int countCorrectAnswers(List<String> correctAnswers, List<String> userAnswers ) {
         int count = 0;
         for (int i = 0; i < correctAnswers.size(); i++) {
             if (correctAnswers.get(i).equalsIgnoreCase(userAnswers.get(i))) {

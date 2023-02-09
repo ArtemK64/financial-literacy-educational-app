@@ -5,9 +5,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,7 +31,27 @@ public class Task {
     private String answer;
 
     @Column(nullable = false, name = "is_answer_correct")
-    private String isAnswerCorrect;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isAnswerCorrect;
+
+    @ManyToOne
+    @JoinColumn(name = "user_email", referencedColumnName = "email", nullable = false)
+    private User user;
+
+//    public boolean getBestResult(List<Task> taskList, String typeOfTask) {
+//        switch (typeOfTask.toLowerCase()) {
+//            case "finances" -> {
+//                for (Task task: taskList) {
+//                    if (task.getNameOfTask().equals(typeOfTask)) {
+//                        if (task.getIsAnswerCorrect()) {
+//                            return true;
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }
+//    }
 
     @Override
     public boolean equals(Object o) {

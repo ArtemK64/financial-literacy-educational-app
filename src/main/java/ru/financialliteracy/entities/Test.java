@@ -1,19 +1,17 @@
 package ru.financialliteracy.entities;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
 import ru.financialliteracy.annotations.ValidAnswer;
 
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @RequiredArgsConstructor
 @Table(name = "test")
 public class Test {
@@ -44,7 +42,9 @@ public class Test {
     @Column(name = "qty_of_correct_answers", nullable = false)
     private Integer qtyOfCorrectAnswers;
 
-    private User userEmail;
+    @ManyToOne
+    @JoinColumn(name = "user_email", referencedColumnName = "email", nullable = false)
+    private User user;
 
     public Test(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {
         this.firstAnswer = firstAnswer;
@@ -85,6 +85,15 @@ public class Test {
         test.fourthAnswer = fourthAnswer.trim();
         test.fifthAnswer = fifthAnswer.trim();
         return test;
+    }
+
+    public final int getBestTestResults(List<Test> testResults) {
+        Test test = testResults
+                .stream()
+                .max(Comparator.comparingInt(
+                        Test::getQtyOfCorrectAnswers))
+                .orElseThrow();
+        return test.getQtyOfCorrectAnswers();
     }
 
     @Override

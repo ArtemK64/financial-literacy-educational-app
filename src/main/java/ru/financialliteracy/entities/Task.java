@@ -38,20 +38,23 @@ public class Task {
     @JoinColumn(name = "user_email", referencedColumnName = "email", nullable = false)
     private User user;
 
-//    public boolean getBestResult(List<Task> taskList, String typeOfTask) {
-//        switch (typeOfTask.toLowerCase()) {
-//            case "finances" -> {
-//                for (Task task: taskList) {
-//                    if (task.getNameOfTask().equals(typeOfTask)) {
-//                        if (task.getIsAnswerCorrect()) {
-//                            return true;
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-//    }
+    public final StringBuilder getBestResult(List<Task> taskList, String typeOfTask, User currentUser) {
+        if (!taskList.isEmpty()) {
+            switch (typeOfTask.toLowerCase()) {
+                case "finances", "deposit", "insurance", "investment", "pension" -> {
+                    for (Task task: taskList) {
+                        if (task.getNameOfTask().equalsIgnoreCase(typeOfTask) &&
+                                currentUser.getEmail().equalsIgnoreCase(task.getUser().getEmail())) {
+                            if (task.getIsAnswerCorrect()) {
+                                return new StringBuilder("Вы верно решили задание «" + typeOfTask + "»");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return new StringBuilder("Вы решили неправильно задание «" + typeOfTask + "» или не решали вовсе");
+    }
 
     @Override
     public boolean equals(Object o) {

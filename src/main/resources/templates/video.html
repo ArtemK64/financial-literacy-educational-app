@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Видеоматериалы</title>
+  <link th:href="@{/css/video.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="results">
+  <video autoplay loop class="results-background-video" muted playsinline>
+    <source src="videos/background-video.mp4" type="video/mp4">
+  </video>
+  <div class="results-window">
+    <h2 class="results-window-title">Некоторые видеоматериалы, которые могут быть вам полезны</h2>
+  </div>
+  <div class="results-video">
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/S88HZWjuVZg"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/c2mPQEkVYg0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+</body>
+</html>

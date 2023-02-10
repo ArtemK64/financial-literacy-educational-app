@@ -25,19 +25,42 @@ public class FinancialLiteracyController {
     }
 
     @GetMapping("/statistics")
-    public String statisticsPage(Test test, Model model) {
-        if (testRepository.count() > 0) {
+    public String statisticsPage(@AuthenticationPrincipal User user, Task task, Test test, Model model) {
+        List<Test> testList = testRepository.findAll()
+                .stream()
+                .filter(t -> t.getUser()
+                        .getEmail()
+                        .equalsIgnoreCase(user.getEmail())).toList();
+
+        if (testList.size() > 0) {
             model.addAttribute("testResults",
                     "Ваш лучший результат по общему тесту. Количество правильных ответов: " +
-                            test.getBestTestResults(testRepository.findAll()));
+                            test.getBestTestResults(testList));
         } else {
             model.addAttribute("testResults", "Вы не решали общий тест");
         }
 
-        if (taskRepository.count() > 0) {
-
-        }
+        model.addAttribute("financesTaskResults",
+                task.getBestResult(taskRepository.findAll(), "Finances", user));
+        model.addAttribute("depositTaskResults",
+                task.getBestResult(taskRepository.findAll(), "Deposit", user));
+        model.addAttribute("insuranceTaskResults",
+                task.getBestResult(taskRepository.findAll(), "Insurance", user));
+        model.addAttribute("investmentTaskResults",
+                task.getBestResult(taskRepository.findAll(), "Investment", user));
+        model.addAttribute("pensionTaskResults",
+                task.getBestResult(taskRepository.findAll(), "Pension", user));
 
         return "statistics";
+    }
+
+    @GetMapping("/about")
+    public String aboutUsPage() {
+        return "about";
+    }
+
+    @GetMapping("/video")
+    public String videoContentPage() {
+        return "video";
     }
 }

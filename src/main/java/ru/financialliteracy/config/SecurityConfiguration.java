@@ -36,7 +36,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/main", "/registration-err")
+                .antMatchers(
+                        "/main",
+                        "/registration-err",
+                        "/exercises/**",
+                        "/theory/**",
+                        "/video",
+                        "/about",
+                        "/statistics")
                 .authenticated()
                 .anyRequest()
                 .permitAll()
